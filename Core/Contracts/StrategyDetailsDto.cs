@@ -11,6 +11,7 @@ namespace TradingPlaces.Core
         public int Quantity { get; set; }
         public decimal SharePrice { get; set; }
         public bool Executed { get; set; }
+        public decimal Amount { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }

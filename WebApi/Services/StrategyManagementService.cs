@@ -36,19 +36,19 @@ namespace TradingPlaces.WebApi.Services
 
             foreach (var strategy in allStrategies)
             {
-                decimal tickerCurrentPrice = _reutbergService.GetQuote(strategy.Ticker);
+                decimal tickerCurrentPrice = _reutbergService.GetQuote(strategy.Ticker);                               
 
                 StrategyAction action = _strategyEvaluator.Evaluate(strategy, tickerCurrentPrice);
 
                 if (action == StrategyAction.Buy)
                 {
-                    _reutbergService.Buy(strategy.Ticker, strategy.Quantity);
-                    await _repository.UpdateStrategyExecutedFlag(strategy.Ticker);
+                    var amount = _reutbergService.Buy(strategy.Ticker, strategy.Quantity);
+                    await _repository.UpdateStrategyExecutedFlagAndAmount(strategy.Ticker, (decimal)amount);
                 }
                 else if (action == StrategyAction.Sell)
                 {
-                    _reutbergService.Sell(strategy.Ticker, strategy.Quantity);
-                    await _repository.UpdateStrategyExecutedFlag(strategy.Ticker);
+                    var amount =_reutbergService.Sell(strategy.Ticker, strategy.Quantity);
+                    await _repository.UpdateStrategyExecutedFlagAndAmount(strategy.Ticker, (decimal)amount);
                 }
                 else 
                 {

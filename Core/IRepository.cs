@@ -8,7 +8,7 @@ namespace TradingPlaces.Core
         Task<string> CreateStrategy(StrategyDetailsDto details);
         Task DeleteStrategy(string ticker);
         Task<bool> StrategyExistFlag(string ticker);
-        Task UpdateStrategyExecutedFlag(string ticker);
+        Task UpdateStrategyExecutedFlagAndAmount(string ticker, decimal amount);
         Task<List<StrategyDetailsDto>> GetAllUnExecutedStrategies();
     }
 }

@@ -8,7 +8,7 @@ namespace Infrastructure
 {
     public class InMemoryRepository : IRepository
     {
-        private readonly Dictionary<string, StrategyDetailsDto> mockDataBase = new Dictionary<string, StrategyDetailsDto>();
+        private readonly Dictionary<string, StrategyDetailsDto> mockDataBase = new Dictionary<string, StrategyDetailsDto>(); 
 
 
         public Task<string> CreateStrategy(StrategyDetailsDto details)
@@ -32,14 +32,15 @@ namespace Infrastructure
             return Task.FromResult(strategyExist);
         }
 
-        public async Task UpdateStrategyExecutedFlag(string ticker)
+        public async Task UpdateStrategyExecutedFlagAndAmount(string ticker, decimal amount)
         {
             if (!(await StrategyExistFlag(ticker)))
             {
                 throw NotFoundException.ExpectedExistingStrategy(ticker);                
-            }
+            }       
 
-            mockDataBase[ticker].Executed = true;            
+            mockDataBase[ticker].Executed = true;
+            mockDataBase[ticker].Amount = amount;
         }
 
         public Task<List<StrategyDetailsDto>> GetAllUnExecutedStrategies()
