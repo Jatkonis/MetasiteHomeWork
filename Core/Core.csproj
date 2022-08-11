@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Reutberg">
+      <HintPath>..\Resources\Reutberg.dll</HintPath>
+    </Reference>
+    <Reference Include="TradingPlaces.Resources">
+      <HintPath>..\Resources\TradingPlaces.Resources.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
