@@ -16,7 +16,10 @@ namespace Tests
         [InlineData(95, 100, -8, StrategyAction.Nothing)]
         [InlineData(103, 100, 2, StrategyAction.Buy)]
         [InlineData(101, 100, 2, StrategyAction.Nothing)]
-        [InlineData(101, 100, -2, StrategyAction.Nothing)]        
+        [InlineData(101, 100, -2, StrategyAction.Nothing)]
+        [InlineData(105, 100, -2, StrategyAction.Nothing)]
+        [InlineData(105, 100, 6, StrategyAction.Nothing)]
+        [InlineData(105, 100, 4, StrategyAction.Buy)]
         public void When_StrategyCreatedStrategyEvaluator_ShouldReturnCorrectDesicion(int currentPrice, int strategyPrice, int priceMovement, StrategyAction expected)
         {
             //Arrage
